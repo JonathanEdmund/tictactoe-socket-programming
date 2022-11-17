@@ -23,7 +23,8 @@ public class Server {
             System.out.println("client 2 joined...");
 
             // start game
-            System.out.println("game started");
+            GameEngine ge = new GameEngine(c1, c2);
+            ge.run();
         }
     }
 }
