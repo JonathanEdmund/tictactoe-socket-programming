@@ -43,6 +43,7 @@ public class GameEngine implements Runnable{
             else 
             { // client 2 turn
                 exit = play(client2 ,client1, c2Mark);
+                chance = true;
             }
         }
         client1.close();
@@ -68,14 +69,14 @@ public class GameEngine implements Runnable{
             c1.write(game.arrayToString());
             c2.write(game.arrayToString());
 
-            c1.write("Wait for opponents move...");
+            c1.write("Waiting for opponents move...");
             c2.write("Your move!");
         } catch (PlayerWonException pwe) {
-            c1.write("\nCongratulations you have won" + pwe);
-            c2.write("\nYou Lost" + pwe);
-
+            c1.write("\nCongratulations you have won! With winning position: " + pwe);
+            c2.write("\nSorry you have lost...");
             c1.write(game.arrayToString());
             c2.write(game.arrayToString());
+            return true;
         } catch (GameDrawException gde) {
             c1.write("\nGame Draw!");
             c2.write("\nGame Draw!");

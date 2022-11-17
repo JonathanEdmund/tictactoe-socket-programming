@@ -30,9 +30,8 @@ public class Tictactoe {
         if(count == 9){
             throw new GameDrawException();
         } else {
-            threes(mark == 1 ? 3: -3);
+            threes(mark == 1 ? 3 : -3);
         }
-
         return true;
     }
 
