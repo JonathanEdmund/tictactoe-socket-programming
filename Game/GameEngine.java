@@ -23,10 +23,10 @@ public class GameEngine implements Runnable{
 
     @Override
     public void run() {
-
+        
         // initial state
-        client1.write("initial state\n" + game.arrayToString());
-        client2.write("initial state\n" + game.arrayToString());
+        client1.write("\nLets play!\n" + game.arrayToString());
+        client2.write("\nLets play!\n" + game.arrayToString());
 
         boolean exit = false;
         boolean chance = true;
@@ -68,7 +68,6 @@ public class GameEngine implements Runnable{
             // send current state to the players
             c1.write(game.arrayToString());
             c2.write(game.arrayToString());
-
             c1.write("Waiting for opponents move...");
             c2.write("Your move!");
         } catch (PlayerWonException pwe) {

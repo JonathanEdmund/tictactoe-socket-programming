@@ -15,6 +15,7 @@ public class Server {
             socket = serverSocket.accept();
             Client c1 = new Client(socket);
             System.out.println("client 1 joined...");
+            c1.write("Waiting for second player...");
 
             // listening for client 2
             System.out.println("waiting for client 2...");

@@ -40,7 +40,7 @@ public class ClientApp {
                 while(true){
                     String msg = sc.nextLine();
                     try{
-                        os.write((msg +  "&").getBytes());
+                        os.write((msg + "&").getBytes());
                     }catch(IOException e){
                         e.printStackTrace();
                     }
@@ -48,5 +48,6 @@ public class ClientApp {
             }
         });
         write.start();
+
     }
 }
