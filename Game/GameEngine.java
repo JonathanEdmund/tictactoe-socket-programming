@@ -46,8 +46,20 @@ public class GameEngine implements Runnable{
                 chance = true;
             }
         }
-        client1.close();
-        client2.close();
+
+        
+
+        if(playAgain(client1, client2)){
+            try {
+                GameEngine ge = new GameEngine(client1, client2);
+                ge.run();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            client1.close();
+            client2.close();
+        }
     }
 
     private boolean play(Client c1, Client c2, String mark) {
@@ -85,6 +97,20 @@ public class GameEngine implements Runnable{
         }
         return false;
         
+    }
+
+    private boolean playAgain(Client c1, Client c2){
+        String msg1, msg2;
+        c1.write("Play Again? (y/n)");
+        c2.write("Play Again? (y/n)");
+        msg1 = c1.read();
+        msg2 = c2.read();
+        if(msg1.matches("n") || msg2.matches("n")){
+            c1.write("Not all players are willing to play again... See you next time!");
+            c2.write("Not all players are willing to play again... See you next time!");
+            return false;
+        }
+        return true;
     }
 
 }
